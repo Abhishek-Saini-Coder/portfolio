@@ -142,7 +142,7 @@ nav .right a i {
   align-items: center;
   gap: 10px;
 
-  width: 200px;
+  width: 150px;
   padding: 10px 20px;
   margin: 10px;
   border: 1.5px solid #d3d3d3;
@@ -160,7 +160,25 @@ nav .right a i {
   font-size: 18px;
 }
 
-/* SECTION 3: Contact */
+/* SECTION 3: Projects */
+#project {
+  margin: 50px;
+}
+
+.project-section {
+  text-align: center;
+}
+
+.project-section h2 {
+  font-size: 35px;
+  text-align: center;
+}
+
+.project-section .first-project {
+  margin: 20px;
+}
+
+/* SECTION 4: Contact */
 .contact-section {
   padding: 0 50px;
   margin-bottom: 100px;
@@ -173,7 +191,8 @@ nav .right a i {
 
 .contact-section .group {
   display: flex;
-  gap: 50px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .contact-section .group .text {
@@ -182,7 +201,7 @@ nav .right a i {
   text-align: center;
 }
 
-.contact-section .group .text p i {
+.contact-section .group .text a i {
   margin-right: 5px;
 }
 /* MEDIA */
