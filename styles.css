@@ -160,6 +160,26 @@ nav .right a i {
   font-size: 18px;
 }
 
+/*SECTION 3: PROJECTS*/
+#projects {
+  padding: 0 50px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.projects-section h2 {
+  font-size: 35px;
+}
+
+.projects-section li {
+  margin: 20px;
+}
+
+.projects-section .text {
+  text-align: center;
+  margin-top: 10px;
+}
+
 /* SECTION 3: Contact */
 .contact-section {
   padding: 0 50px;
