@@ -195,12 +195,13 @@ nav .right a i {
 .skills-section .cells {
   display: flex;
   justify-content: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   min-height: 100px;
+  overflow-x: auto;
 }
 
 .skills-section .cells .cell {
@@ -208,23 +209,28 @@ nav .right a i {
   justify-content: center;
   align-items: center;
   gap: 15px;
-  width: 160px;
+  width: 180px;
   height: 60px;
   padding: 15px 20px;
   border: 1.5px solid #d3d3d3;
   border-radius: 8px;
   background-color: var(--card-background);
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 /* Special width for AI Expertise cells */
+.skills-section .cells.ai-expertise {
+  flex-wrap: wrap;
+}
+
 .skills-section .cells.ai-expertise .cell {
-  width: 240px;
+  width: 280px;
 }
 
 /* Extra width for cells with longer text */
 .skills-section .cells.ai-expertise .cell.long-text {
-  width: 260px;
+  width: 300px;
 }
 
 .skills-section .cells .cell:hover {
