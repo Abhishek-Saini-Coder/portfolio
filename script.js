@@ -1,58 +1,76 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const track = document.querySelector('.experience-track');
-  const cards = document.querySelectorAll('.experience-card');
-  const prevButton = document.querySelector('.slider-nav.prev');
-  const nextButton = document.querySelector('.slider-nav.next');
+// Theme Toggle
+const themeToggle = document.getElementById('theme-toggle')
+const html = document.documentElement
+
+// Check for saved theme preference or use system preference
+const savedTheme = localStorage.getItem('theme')
+const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+if (savedTheme) {
+  html.setAttribute('data-theme', savedTheme)
+  updateThemeIcon(savedTheme)
+} else if (systemPrefersDark) {
+  html.setAttribute('data-theme', 'dark')
+  updateThemeIcon('dark')
+}
+
+// Theme toggle click handler
+themeToggle.addEventListener('click', () => {
+  const currentTheme = html.getAttribute('data-theme')
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light'
   
-  let currentIndex = 0;
-  let cardsPerView = getCardsPerView();
-  
-  function getCardsPerView() {
-    if (window.innerWidth <= 600) {
-      return 1;
-    } else if (window.innerWidth <= 1024) {
-      return 2;
-    }
-    return 3;
-  }
-  
-  function updateSlider() {
-    const cardWidth = cards[0].offsetWidth + 30; // card width + gap
-    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-    
-    // Update button states
-    prevButton.style.opacity = currentIndex === 0 ? '0.5' : '1';
-    nextButton.style.opacity = currentIndex >= cards.length - cardsPerView ? '0.5' : '1';
-  }
-  
-  prevButton.addEventListener('click', () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateSlider();
-    }
-  });
-  
-  nextButton.addEventListener('click', () => {
-    if (currentIndex < cards.length - cardsPerView) {
-      currentIndex++;
-      updateSlider();
-    }
-  });
-  
-  // Initial button states
-  updateSlider();
-  
-  // Update on window resize
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      const newCardsPerView = getCardsPerView();
-      if (newCardsPerView !== cardsPerView) {
-        cardsPerView = newCardsPerView;
-        currentIndex = 0;
-        updateSlider();
-      }
-    }, 250);
-  });
-}); 
+  html.setAttribute('data-theme', newTheme)
+  localStorage.setItem('theme', newTheme)
+  updateThemeIcon(newTheme)
+})
+
+// Update theme icon
+function updateThemeIcon(theme) {
+  const icon = themeToggle.querySelector('i')
+  icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun'
+}
+
+// Experience Slider
+const track = document.querySelector('.experience-track')
+const prevButton = document.querySelector('.slider-nav.prev')
+const nextButton = document.querySelector('.slider-nav.next')
+let currentPosition = 0
+const cardWidth = document.querySelector('.experience-card').offsetWidth
+const gap = 30 // Gap between cards
+
+function updateSliderPosition() {
+  track.style.transform = `translateX(${currentPosition}px)`
+}
+
+prevButton.addEventListener('click', () => {
+  const maxPosition = 0
+  currentPosition = Math.min(currentPosition + cardWidth + gap, maxPosition)
+  updateSliderPosition()
+})
+
+nextButton.addEventListener('click', () => {
+  const minPosition = -(cardWidth + gap) * (track.children.length - 3)
+  currentPosition = Math.max(currentPosition - cardWidth - gap, minPosition)
+  updateSliderPosition()
+})
+
+// Update slider on window resize
+window.addEventListener('resize', () => {
+  const newCardWidth = document.querySelector('.experience-card').offsetWidth
+  const scale = newCardWidth / cardWidth
+  currentPosition = currentPosition * scale
+  updateSliderPosition()
+})
+
+// Handle project image loading
+document.querySelectorAll('.project-image img').forEach(img => {
+  img.addEventListener('load', function() {
+    this.classList.add('loaded')
+  })
+
+  img.addEventListener('error', function() {
+    // Fallback to a placeholder if image fails to load
+    this.src = 'https://via.placeholder.com/800x600?text=Project+Preview'
+    this.classList.add('loaded')
+  })
+}) 
