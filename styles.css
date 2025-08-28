@@ -540,14 +540,27 @@ nav .right button i {
   background-color: var(--bg-secondary);
 }
 
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+.project-slider {
+  position: relative;
   margin-top: 2rem;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  overflow: hidden;
+  padding: 0 50px;
+}
+
+.project-track {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.3s ease;
+  padding: 0 1rem;
+}
+
+.project-card {
+  min-width: 300px;
+  max-width: 450px;
+  flex-shrink: 0;
 }
 
 .project-card {
@@ -565,6 +578,8 @@ nav .right button i {
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+
+
 
 .project-image {
   position: relative;
@@ -693,10 +708,24 @@ nav .right button i {
 
 /* Responsive Styles */
 @media (max-width: 1200px) {
-  .project-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    padding: 0 1rem;
+  .project-slider {
+    max-width: 100%;
+    padding: 0 40px;
+  }
+  
+  .project-card {
+    min-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-slider {
+    padding: 0 35px;
+  }
+  
+  .project-card {
+    min-width: 300px;
+    max-width: 300px;
   }
 }
 
@@ -872,9 +901,19 @@ nav .right button i {
     padding: 2rem 0.5rem;
   }
 
-  .project-grid {
-    grid-template-columns: 1fr;
+  .project-slider {
+    padding: 0 40px;
+    max-width: 100%;
+  }
+
+  .project-track {
     gap: 1rem;
+  }
+
+  .project-card {
+    min-width: 280px;
+    max-width: 280px;
+    width: 280px;
   }
 
   .project-image {
