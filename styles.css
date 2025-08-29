@@ -256,16 +256,20 @@ nav .right button i {
 
 /* Special width for AI Expertise cells */
 .skills-section .cells.ai-expertise {
-  flex-wrap: wrap;
+  
+  display: inline-block;
+  position: relative;
+  display: flex;
+  justify-content: start;
 }
 
 .skills-section .cells.ai-expertise .cell {
-  width: 280px;
+  width: 200px;
 }
 
 /* Extra width for cells with longer text */
 .skills-section .cells.ai-expertise .cell.long-text {
-  width: 300px;
+  width: auto;
 }
 
 .skills-section .cells .cell:hover {
