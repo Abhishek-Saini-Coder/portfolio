@@ -468,9 +468,9 @@ nav .right button i {
 .project-slider {
   position: relative;
   margin-top: 0rem;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 1200px;
+  margin-left: 50px;
+  margin-right: 50px;
   overflow: hidden;
   padding: 0 0px;
 }
@@ -483,9 +483,10 @@ nav .right button i {
 }
 
 .project-card {
-  min-width: 300px;
-  max-width: 450px;
+  min-width: 200px;
+  max-width: 350px;
   flex-shrink: 0;
+  max-height: auto;
 }
 
 .project-card {
