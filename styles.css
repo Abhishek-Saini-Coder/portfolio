@@ -143,6 +143,12 @@ nav .right button i {
   font-size: 45px;
 }
 
+.hero-section .text p{
+  flex: 5;
+  width: 500px;
+  justify-content: center;
+}
+
 .hero-section .text .links {
   margin-top: 25px;
 }
