@@ -335,7 +335,7 @@ nav .right button i {
 
 /* SECTION 3: Experience */
 .experience-section {
-  padding: var(--section-padding) 50px;
+  /* padding: var(--section-padding) 40px; */
   margin-bottom: calc(var(--section-padding) * 0.7);
   text-align: center;
 }
@@ -345,9 +345,21 @@ nav .right button i {
   margin-bottom: 40px;
 }
 
+.experience-section h2:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 50px;
+  height: 3px;
+  background-color: var(--link-color);
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+
 .experience-slider {
   position: relative;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   overflow: hidden;
   padding: 0 40px; /* Add padding for navigation buttons */
@@ -355,7 +367,7 @@ nav .right button i {
 
 .experience-track {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 1s ease;
   gap: 30px;
 }
 
@@ -363,11 +375,12 @@ nav .right button i {
   flex: 0 0 calc(33.333% - 20px);
   background: var(--bg-primary);
   padding: 30px;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   box-shadow: 0 4px 15px var(--shadow-color);
   text-align: left;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   min-width: 300px;
+  
 }
 
 .experience-card:hover {
@@ -463,6 +476,19 @@ nav .right button i {
 .project-section {
   padding: 4rem 2rem;
   background-color: var(--bg-secondary);
+  text-align: center;
+}
+
+.project-section h2:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 50px;
+  height: 3px;
+  background-color: var(--link-color);
+  border-radius: 2px;
+  transform: translateX(-50%);
 }
 
 .project-slider {
